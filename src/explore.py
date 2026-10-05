@@ -7,11 +7,11 @@ print("파일 수:", len(files))
 
 
 def read_csv_auto(path):
+    kwargs = dict(index_col=False, dtype={"사용일자": str, "등록일자": str})
     try:
-        return pd.read_csv(path, encoding="utf-8")
+        return pd.read_csv(path, encoding="utf-8-sig", **kwargs)
     except UnicodeDecodeError:
-        return pd.read_csv(path, encoding="cp949")
-
+        return pd.read_csv(path, encoding="cp949", **kwargs)
 
 frames = []
 for f in files:
@@ -34,3 +34,7 @@ print(df.head())
 print(df.dtypes)
 print(df.isna().sum())
 print("중복 행:", df.duplicated().sum())
+print("날짜 범위:", df["사용일자"].min(), "~", df["사용일자"].max())
+print("노선:", sorted(df["노선명"].unique()))
+print("역 수:", df["역명"].nunique())
+print("키 중복:", df.duplicated(["사용일자", "노선명", "역명"]).sum())
