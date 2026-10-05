@@ -1,16 +1,6 @@
-# 비밀 정보
 .env
-*.key
-
-# 원본 데이터 (용량 + 재배포 방지)
 data/raw/
-
-# Airflow가 자동 생성하는 파일
-logs/
 __pycache__/
 *.pyc
-
-# 개발 환경
 .venv/
 .idea/
-.vscode/
