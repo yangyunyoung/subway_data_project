@@ -1,4 +1,3 @@
--- Move raw rows into staging with proper types. Safe to re-run.
 INSERT INTO staging.subway_ridership
     (use_date, line_name, station_name, boarding_cnt, alighting_cnt, registered_date)
 SELECT
